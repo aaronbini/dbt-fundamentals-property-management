@@ -21,11 +21,11 @@ grouped_units as (
 final as (
     select
         property_id,
-        property_owners.property_owner_id,
-        grouped_units.number_of_units
+        array_agg(property_owner_id) as property_owners,
+        count(grouped_units.number_of_units) as num_units
     from properties
-    join property_owners using (property_id)
     join grouped_units using (property_id)
+    join property_owners using (property_id)
     group by 1
 )
 

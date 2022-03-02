@@ -20,8 +20,8 @@ final as (
         bank_accounts.name,
         bank_accounts.bank_account_number,
         bank_accounts.routing_number,
-        contact_infos.first_name,
-        contact_infos.last_name,
+        contact_infos.contact_id,
+        concat(contact_infos.first_name, ' ', contact_infos.last_name) as tenant_name,
         contact_infos.email_address,
         contact_infos.phone_number
     from tenants
