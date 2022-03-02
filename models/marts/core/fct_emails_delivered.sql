@@ -12,10 +12,10 @@ final as (
         e.sent_at,
         e.subject,
         e.body,
-        e.delivered_at,
-        es.event
+        e.delivered_at
     from emails as e
     join email_status as es using (email_id)
+    where es.event = 'delivered'
 )
 
 select * from final

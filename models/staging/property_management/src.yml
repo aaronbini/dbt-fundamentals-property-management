@@ -6,6 +6,10 @@ sources:
     schema: property_management
     tables:
       - name: bank_accounts
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
       - name: contact_infos
       - name: emails
       - name: email_delivery_statuses
