@@ -4,7 +4,8 @@ with transactions as (
         type,
         amount,
         payer,
-        payee
+        payee,
+        created_at
     from {{ source('property_management', 'transactions') }}
 )
 

@@ -1,0 +1,77 @@
+version: 2
+
+models:
+    - name: stg_bank_accounts
+      description: keys to the kingdom, show me the money!!!
+      columns: 
+        - name: bank_account_id
+          tests:
+            - unique
+            - not_null
+    - name: stg_contact_infos
+      columns:
+        - name: contact_id
+          description: contact information
+          tests:
+            - unique
+            - not_null
+    - name: stg_email_delivery_statuses
+      columns:
+        - name: email_delivery_status_id
+          tests:
+            - unique
+            - not_null
+        - name: event
+          tests:
+            - accepted_values:
+                values:
+                  - processing
+                  - processed
+                  - rejected
+                  - clicked
+                  - delivered
+                  - opened
+    - name: stg_rental_applications
+      columns:
+        - name: rental_application_id
+          tests:
+            - unique
+            - not_null
+        - name: status
+          tests:
+            - accepted_values:
+                values:
+                  - denied
+                  - approved
+                  - converted_to_tenant
+    - name: stg_transactions
+      columns:
+        - name: transaction_id
+          tests:
+            - unique
+            - not_null
+        - name: type
+          tests:
+            - accepted_values:
+                values:
+                  - charge
+                  - credit
+    - name: stg_emails
+      description: the emails
+      columns:
+        - name: email_id
+          tests:
+            - unique
+            - not_null
+    - name: stg_property_owners
+      description: "{{ doc('property_owners') }}"
+    - name: stg_leases
+      description: the leases
+      columns:
+        - name: lease_id
+          tests:
+            - unique
+            - not_null
+            - relationships:
+                to: ref('stg_units')
+                field: unit_id
