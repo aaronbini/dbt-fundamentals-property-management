@@ -1,14 +1,6 @@
 version: 2
 
 sources:
-  - name: stripe
-    database: raw
-    schema: stripe
-    tables:
-      - name: payments
-        loaded_at_field: _batched_at
-        freshness:
-          warn_after: {count: 6, period: hour}
   - name: property_management
     database: raw
     schema: property_management
