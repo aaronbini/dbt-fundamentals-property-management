@@ -9,7 +9,6 @@ sources:
         loaded_at_field: _batched_at
         freshness:
           warn_after: {count: 6, period: hour}
-          error_after: {count: 12, period: hour}
   - name: property_management
     database: raw
     schema: property_management
@@ -18,7 +17,6 @@ sources:
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
       - name: contact_infos
         description: raw source contact info
         columns:
@@ -34,12 +32,10 @@ sources:
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
       - name: leases
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
       - name: owners
       - name: properties
       - name: property_owners
